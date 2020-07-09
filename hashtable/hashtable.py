@@ -97,7 +97,19 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        index =  self.hash_index(key)
+        cur = self.storage[index].head
+
+        while cur:
+            if cur.key == key:
+                cur.value = value
+            cur = cur.next
+
+        entry = HashTableEntry(key, value)
+        self.storage[index].insert(entry)
+        self.count += 1
+
+
 
 
     def delete(self, key):
@@ -108,7 +120,8 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        self.put(key, None)
+        self.count -= 1
 
 
     def get(self, key):
@@ -119,7 +132,14 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        index = self.hash_index(key)
+        cur = self.storage[index].head
+
+        while cur:
+            if cur.key == key:
+                return cur.value
+            cur = cur.next
+        return None
 
 
     def resize(self, new_capacity):
