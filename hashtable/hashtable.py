@@ -40,7 +40,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        return self.capacity
 
 
     def get_load_factor(self):
@@ -49,7 +49,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        return self.count / self.capacity
 
 
     def fnv1(self, key):
@@ -59,7 +59,17 @@ class HashTable:
         Implement this, and/or DJB2.
         """
 
-        # Your code here
+        seed = 0
+        FNV_prime = 578421533
+        offset_basis = 5548812254
+
+        fnv1_hash = offset_basis + seed
+
+        for char in key:
+            fnv1_hash = fnv1_hash * FNV_prime
+            fnv1_hash = fnv1_hash ^ ord(char)
+
+        return fnv1_hash
 
 
     def djb2(self, key):
@@ -76,8 +86,8 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        #return self.fnv1(key) % self.capacity
-        return self.djb2(key) % self.capacity
+        return self.fnv1(key) % self.capacity
+        # return self.djb2(key) % self.capacity
 
     def put(self, key, value):
         """
