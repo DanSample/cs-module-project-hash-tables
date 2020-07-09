@@ -1,3 +1,7 @@
+from linked_list import LinkedList
+import sys
+sys.path.append('./linked_list')
+
 class HashTableEntry:
     """
     Linked List hash table key/value pair
@@ -20,8 +24,10 @@ class HashTable:
     Implement this.
     """
 
-    def __init__(self, capacity):
-        # Your code here
+    def __init__(self, capacity=MIN_CAPACITY):
+        self.storage = [LinkedList()] * capacity
+        self.count = 0
+        self.capacity = capacity
 
 
     def get_num_slots(self):
