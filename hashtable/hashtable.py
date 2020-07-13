@@ -149,7 +149,25 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        # If the load factor is less than .7
+        if self.get_load_factor() >= 0.7:
+            self.count = 0
+            # Save data to a variable
+            old_data = self.storage
+            # Create a new linked list equal to the new capacity value
+            self.data = [LinkedList()] * new_capacity
+            # Loop through the old data
+            for node in old_data:
+                #the current_node to equal the node.head value
+                current_node = node.head
+                # Then loop through starting at the current_node above
+                while current_node:
+                    # use the put method to add to the new data stack SLL
+                    self.put(current_node.key, current_node.value)
+                    current_node = current_node.next
+                    self.count += 1
+            # Reset the capacity
+            self.capacity = new_capacity
 
 
 
