@@ -25,9 +25,9 @@ class HashTable:
     """
 
     def __init__(self, capacity=MIN_CAPACITY):
-        self.storage = [LinkedList()] * capacity
-        self.count = 0
         self.capacity = capacity
+        self.count = 0
+        self.storage = [LinkedList()] * capacity
 
 
     def get_num_slots(self):
@@ -155,7 +155,7 @@ class HashTable:
             # Save data to a variable
             old_data = self.storage
             # Create a new linked list equal to the new capacity value
-            self.data = [LinkedList()] * new_capacity
+            self.storage = [LinkedList()] * new_capacity
             # Loop through the old data
             for node in old_data:
                 #the current_node to equal the node.head value

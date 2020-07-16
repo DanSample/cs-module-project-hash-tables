@@ -33,7 +33,7 @@ class LinkedList:
     def lookup(self, value):
         current_node = self.head
         # walk the linked list
-        while current is not None:
+        while current_node is not None:
             if current_node.value == value:
                 # Found
                 return current_node
